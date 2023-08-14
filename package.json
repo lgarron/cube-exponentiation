@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "cubing": "^0.39.1"
+  },
+  "devDependencies": {
+    "barely-a-dev-server": "^0.6.0",
+    "esbuild": "^0.19.2"
+  }
+}
