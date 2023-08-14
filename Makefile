@@ -17,3 +17,7 @@ deploy: clean build
 		./dist/experiments.cubing.net/exponentiation/ \
 		${SFTP_PATH}
 	echo "\nDone deploying. Go to ${URL}\n"
+
+.PHONY: clean
+clean:
+	rm -rf ./dist/
