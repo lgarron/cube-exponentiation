@@ -3,23 +3,22 @@ import { TwistyPlayer, type TwistyAlgEditor } from "cubing/twisty";
 import { randomScrambleForEvent } from "cubing/scramble";
 import { eventInfo } from "cubing/puzzles";
 
-const eventID = new URL(location.href).searchParams.get("event-id") ?? "333";
-let puzzleID;
+const event = new URL(location.href).searchParams.get("event") ?? "333";
+const exponent = parseInt(new URL(location.href).searchParams.get("exponent") ?? "12");
+let puzzle;
 try {
-  puzzleID = eventInfo(eventID)?.puzzleID;
+  puzzle = eventInfo(event)?.puzzleID;
 } catch(e) {
-  document.body.append("Invalid event ID: ", eventID)
+  document.body.append("Invalid event ID: ", event)
 }
-const exponent = 12;
 
-const editor = document.querySelector("twisty-alg-editor") as TwistyAlgEditor;
 const player = document.querySelector("twisty-player") as TwistyPlayer;
-player.puzzle = "megaminx";
+player.puzzle = puzzle;
 
 
 const subsequentPlayers : TwistyPlayer[] = [];
 for (let i = 2; i <= exponent; i++) {
-  const nextPlayer = document.body.appendChild( new TwistyPlayer({puzzle: "megaminx"}));
+  const nextPlayer = document.body.appendChild( new TwistyPlayer({puzzle}));
   subsequentPlayers.push(nextPlayer);
 }
 
@@ -32,5 +31,5 @@ player.experimentalModel.alg.addFreshListener((alg) => {
 })
 
 document.querySelector("#random-scramble")?.addEventListener("click",async () => {
-  player.alg = await randomScrambleForEvent(eventID);
+  player.alg = await randomScrambleForEvent(event);
 })

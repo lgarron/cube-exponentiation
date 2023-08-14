@@ -6,11 +6,11 @@ build:
 dev:
 	bun run script/dev.ts
 
-SFTP_PATH      = "towns.dreamhost.com:~/experiments.cubing.net/exponentiation/"
+SFTP_PATH      = "cubing_deploy@towns.dreamhost.com:~/experiments.cubing.net/exponentiation/"
 URL            = "https://experiments.cubing.net/exponentiation/"
 
 .PHONY: deploy
-deploy: clean build
+deploy: 
 	rsync -avz \
 		--exclude .DS_Store \
 		--exclude .git \
