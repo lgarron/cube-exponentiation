@@ -1,9 +1,12 @@
 {
   "dependencies": {
-    "cubing": "^0.39.1"
+    "cubing": "^0.48.4"
   },
   "devDependencies": {
-    "barely-a-dev-server": "^0.6.0",
-    "esbuild": "^0.19.2"
+    "barely-a-dev-server": "^0.6.1",
+    "esbuild": "^0.20.2"
+  },
+  "@cubing/deploy": {
+    "https://experiments.cubing.net/exponentiation/": {}
   }
 }
